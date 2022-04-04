@@ -15,6 +15,7 @@ import java.util.logging.Logger;
  */
 public class Utils {
 
+	// COUPING-COHESION subteam 2: 2 biến DATE_FORMATTER và LOGGER không được sử dụng trong class -> co-incidental cohesion
 	public static DateFormat DATE_FORMATTER = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	private static Logger LOGGER = getLogger(Utils.class.getName());
 	static {

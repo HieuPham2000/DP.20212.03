@@ -15,6 +15,11 @@ import java.io.IOException;
 
 public class PopupScreen extends BaseScreenHandler {
 
+    /*
+    COUPING-COHESION subteam 2: Method loading, setupData, setupFunctionality của class đang có co-incidental cohesion
+    Do các methods này không được sử dụng ở bất cứ đâu trong project
+     */
+
     @FXML
     ImageView icon;
 

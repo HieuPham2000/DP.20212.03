@@ -16,8 +16,12 @@ import views.screen.popup.PopupScreen;
 
 public abstract class BaseScreenHandler extends FXMLScreenHandler {
 
-	private static final Logger LOGGER = Utils.getLogger(BaseScreenHandler.class.getName());
+	/*
+	COUPING-COHESION subteam 2: Biến LOGGER và method forward trong class này đang ở mức độ cohesion là co-incidental
+	do nó chỉ được khởi tạo mà không được sử dụng trong class và các sub-class
+	*/
 
+	private static final Logger LOGGER = Utils.getLogger(BaseScreenHandler.class.getName());
 
 	private Scene scene;
 	private BaseScreenHandler prev;
