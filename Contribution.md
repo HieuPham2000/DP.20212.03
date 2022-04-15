@@ -1,6 +1,6 @@
-### Bài 2: Coupling
-- Subteam 1: Nguyễn Văn A, Nguyễn Thị B
-- Subteam 2: Nguyễn Văn C, Nguyễn Thị D
+### Bài 1: Coupling-Cohesion
+- Subteam 1: Phạm Trung Hiếu, Nguyễn Minh Tuân
+- Subteam 2: Nguyễn Đình Hùng, Phạm Hữu Anh Quốc
 
 
 

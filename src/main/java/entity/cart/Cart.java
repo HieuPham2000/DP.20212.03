@@ -59,7 +59,10 @@ public class Cart {
         }
         if (!allAvailable) throw new MediaNotAvailableException("Some media not available");
     }
-
+    
+    // Stamp coupling
+    // Chỉ dùng id nhưng truyền cả Media
+    // nmtuan (subtem1)
     public CartItem checkMediaInCart(Media media){
         for (CartItem cartItem : lstCartItem) {
             if (cartItem.getMedia().getId() == media.getId()) return cartItem;
