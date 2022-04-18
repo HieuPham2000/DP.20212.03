@@ -2,6 +2,7 @@ package entity.payment;
 
 public class PaymentTransaction {
 	private String errorCode;
+	// Vi phạm OCP: Phụ thuộc trực tiếp CreditCard, do có yêu cầu thêm phương thức thanh toán mới (DomesticCard)
 	private CreditCard card;
 	private String transactionId;
 	private String transactionContent;

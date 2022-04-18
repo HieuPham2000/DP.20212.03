@@ -3,6 +3,7 @@ package entity.payment;
 /**
  * @author
  */
+// Vi phạm OCP: Sau này yêu cầu thêm phương thức thanh toán mới (DomesticCard) => nên tạo lớp abstract Card
 public class CreditCard {
 
     private String cardCode;
