@@ -21,6 +21,9 @@ public class DeliveryInfo {
         this.distanceCalculator = distanceCalculator;
     }
 
+    // SRP: Việc tính phí ship nên tách ra, vì có yêu cầu thay đổi cách tính. Đây không phải nhiệm vụ của class này.
+    // OCP: Phụ thuộc trực tiếp distanceCalculator. Sau này có yêu cầu thay đổi cách tính thì phải vào sửa trực tiếp.
+    // pthieu 18.4.2022
     public int calculateShippingFee(Order order) {
         int distance = distanceCalculator.calculateDistance(address, province);
         return (int) (distance * 1.2);
