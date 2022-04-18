@@ -30,6 +30,11 @@ import java.util.logging.Logger;
 
 public class ShippingScreenHandler extends BaseScreenHandler {
 
+	/*
+	COUPING-COHESION subteam 2: Method notifyError của class đang có co-incidental cohesion
+	Do các methods này không được sử dụng ở bất cứ đâu trong project
+	*/
+
 	private static final Logger LOGGER = Utils.getLogger(ShippingScreenHandler.class.getName());
 
 	@FXML
