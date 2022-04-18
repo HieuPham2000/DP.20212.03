@@ -22,6 +22,13 @@ public class InterbankPayloadConverter {
      * @param contents
      * @return
      */
+
+    /*
+    COUPING-COHESION subteam 2: Method convertToRequestPayload và extractPaymentTransaction đang có mức độ
+    cohesion là co-incidental do 2 methods này không có sử dụng chung method nào, chỉ liên quan với nhau
+    do cùng thực hiện việc convert dữ liệu
+    */
+
     String convertToRequestPayload(CreditCard card, int amount, String contents) {
         Map<String, Object> transaction = new MyMap();
 
