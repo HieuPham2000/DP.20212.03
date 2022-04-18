@@ -61,6 +61,8 @@ public class AuthenticationController extends BaseController {
      * @param message - plain text as {@link String String}.
      * @return cipher text as {@link String String}.
      */
+     // Vi phạm SRP: Không phải nhiệm vụ của lớp này
+     // Sau này có thể sử dụng hàm băm khác...
     private String md5(String message) {
         String digest = null;
         try {

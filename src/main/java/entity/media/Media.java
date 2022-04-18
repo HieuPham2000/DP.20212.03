@@ -45,6 +45,8 @@ public class Media {
         this.imageURL = imageUrl;
     }
 
+    // Vi phạm SRP: vì method này connect đến CSDL, không phải nhiệm vụ của class entity
+    // pthieu 18.4.2022
     public int getQuantity() throws SQLException {
         int updated_quantity = new MediaDAO().getMediaById(id).quantity;
         this.quantity = updated_quantity;
