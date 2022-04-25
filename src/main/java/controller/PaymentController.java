@@ -20,6 +20,10 @@ import subsystem.InterbankSubsystem;
  * 
  * @author hieud
  *
+ * Vi phạm DIP:
+ * PaymentController phụ thuộc vào lớp chi tiết là Credit Card.
+ * Sau này có phát sinh việc sử dụng Domestic Card.
+ * pthieu, nmtuan 25.4.2022
  */
 public class PaymentController extends BaseController {
 
