@@ -10,7 +10,7 @@ import entity.payment.PaymentTransaction;
  * {@link InterbankSubsystem InterbankSubsystem} to make transaction
  * 
  * @author hieud
- * 
+ * Vi phạm DIP: phụ thuộc trực tiếp lớp chi tiết CreditCard
  */
 public interface InterbankInterface {
 
@@ -41,6 +41,10 @@ public interface InterbankInterface {
 	 * @throws UnrecognizedException if responded with an unknown error code or
 	 *                               something goes wrong
 	 */
+
+	/*
+	 Vi phạm ISP do trong tương lai có thể phải thay đổi hệ thống thanh toán khác không có cơ chế hoàn tiền (refund method)
+	*/
 	public abstract PaymentTransaction refund(CreditCard card, int amount, String contents)
 			throws PaymentException, UnrecognizedException;
 

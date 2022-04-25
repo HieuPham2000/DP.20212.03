@@ -9,7 +9,7 @@ import subsystem.interbank.InterbankSubsystemController;
  * Interbank to make transaction.
  * 
  * @author hieud
- *
+ * Vi phạm DIP: phụ thuộc trực tiếp lớp chi tiết CreditCard
  */
 public class InterbankSubsystem implements InterbankInterface {
 
