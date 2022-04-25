@@ -10,7 +10,7 @@ import entity.payment.PaymentTransaction;
  * {@link InterbankSubsystem InterbankSubsystem} to make transaction
  * 
  * @author hieud
- * 
+ * Vi phạm DIP: phụ thuộc trực tiếp lớp chi tiết CreditCard
  */
 public interface InterbankInterface {
 
