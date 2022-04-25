@@ -27,6 +27,10 @@ import views.screen.popup.PopupScreen;
 
 public class MediaHandler extends FXMLScreenHandler implements Observable {
 
+    /*
+    COUPING-COHESION subteam 2: Biến LOGGER của class này có co-incidental cohesion
+    do chỉ được khởi tạo mà không được sử dụng ở bất cứ đâu
+     */
     @FXML
     protected ImageView mediaImage;
 

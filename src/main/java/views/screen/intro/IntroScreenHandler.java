@@ -17,8 +17,11 @@ import views.screen.popup.PopupScreen;
 
 public class IntroScreenHandler extends BaseScreenHandler {
 
+    /*
+    COUPING-COHESION subteam 2: Method setupData của class đang có stamp coupling do có truyền tham số
+    nhưng phần implement lại không sử dụng
+     */
     private static final Logger LOGGER = Utils.getLogger(IntroScreenHandler.class.getName());
-
 
     @FXML
     ImageView logo;

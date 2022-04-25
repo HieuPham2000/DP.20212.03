@@ -38,6 +38,11 @@ import views.screen.popup.PopupScreen;
 
 public class HomeScreenHandler extends BaseScreenHandler implements Observer {
 
+    /*
+    COUPING-COHESION subteam 2: Method getNumMediaCartLabel của class đang có co-incidental do không được sử dụng
+    ở bất cứ đâu trong project
+     */
+
     public static Logger LOGGER = Utils.getLogger(HomeScreenHandler.class.getName());
 
     @FXML

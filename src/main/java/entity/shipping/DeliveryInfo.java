@@ -5,6 +5,7 @@ import org.example.DistanceCalculator;
 
 public class DeliveryInfo {
 
+	// content coupling: nên để private
     protected String name;
     protected String phone;
     protected String province;

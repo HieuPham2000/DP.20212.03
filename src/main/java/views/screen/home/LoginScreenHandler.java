@@ -36,6 +36,11 @@ import java.util.logging.Logger;
 
 public class LoginScreenHandler extends BaseScreenHandler{
 
+    /*
+    COUPING-COHESION subteam 2: Method backToHomeScreen của class đang có stamp coupling do có tham số MouseEvent
+    nhưng trong phần implement không cần sử dụng biến này
+     */
+
     public static Logger LOGGER = Utils.getLogger(LoginScreenHandler.class.getName());
 
     @FXML

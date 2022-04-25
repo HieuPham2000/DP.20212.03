@@ -22,6 +22,15 @@ public class ApplicationProgrammingInterface {
 	public static DateFormat DATE_FORMATTER = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	private static Logger LOGGER = Utils.getLogger(Utils.class.getName());
 
+	/*
+	COUPING-COHESION subteam 2: Method get và post của class này đang có LOGICAL COHESION
+	Cải thiện: Tạo abstract class ApplicationProgrammingAbstract có các methods dùng 
+		chung như setupConnection, allowMethods,... và 1 method abstract callApi 
+	Sau đó tạo các method con extends ApplicationProgrammingAbstract và implement callApi
+	Ví dụ: Tạo PostCaller và implement callApi tương tự method post của class hiện tại
+		Tạo GetCaller và implement callApi tương tự method get của class hiện tại
+	*/
+
 	public static String get(String url, String token) throws Exception {
 		LOGGER.info("Request URL: " + url + "\n");
 		HttpURLConnection conn = setupConnection(url);

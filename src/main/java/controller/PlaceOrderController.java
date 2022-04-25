@@ -92,6 +92,10 @@ public class PlaceOrderController extends BaseController {
         else throw new InvalidDeliveryInfoException();
     }
     
+    /**
+     * COHESION: Procedural
+     * nmtuan (subteam1)
+     */
     public boolean validatePhoneNumber(String phoneNumber) {
         if (phoneNumber.length() != 10) return false;
         if (!phoneNumber.startsWith("0")) return false;
@@ -103,6 +107,10 @@ public class PlaceOrderController extends BaseController {
         return true;
     }
     
+    /**
+     * COHESION: Procedural
+     * nmtuan (subteam1)
+     */
     public boolean validateName(String name) {
         if (Objects.isNull(name)) return false;
         String patternString = "^[a-zA-Z\\s]*$";
@@ -111,6 +119,10 @@ public class PlaceOrderController extends BaseController {
         return matcher.matches();
     }
     
+    /**
+     * COHESION: Procedural
+     * nmtuan (subteam1)
+     */
     public boolean validateAddress(String address) {
         if (Objects.isNull(address)) return false;
         String patternString = "^[a-zA-Z\\s]*$";
