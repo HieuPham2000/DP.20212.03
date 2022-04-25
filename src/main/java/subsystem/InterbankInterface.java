@@ -41,6 +41,10 @@ public interface InterbankInterface {
 	 * @throws UnrecognizedException if responded with an unknown error code or
 	 *                               something goes wrong
 	 */
+
+	/*
+	 Vi phạm ISP do trong tương lai có thể phải thay đổi hệ thống thanh toán khác không có cơ chế hoàn tiền (refund method)
+	*/
 	public abstract PaymentTransaction refund(CreditCard card, int amount, String contents)
 			throws PaymentException, UnrecognizedException;
 
