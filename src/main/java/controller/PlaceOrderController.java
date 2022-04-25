@@ -24,6 +24,7 @@ import java.util.regex.Pattern;
 // Vi phạm SRP: Các phương thức validate không phải nhiệm vụ của lớp này
 // Khi có yêu cầu thay đổi cách validate
 // OCP: Phụ thuộc trực tiếp distanceCalculator. Sau này có yêu cầu thay đổi cách tính thì phải vào sửa trực tiếp.
+// Vi phạm DIP: Phụ thuộc trực tiếp vào distanceCalculator.
 public class PlaceOrderController extends BaseController {
 
     /**
