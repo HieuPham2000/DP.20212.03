@@ -1,7 +1,7 @@
 package entity.shipping;
 
-import entity.order.Order;
-import org.example.DistanceCalculator;
+import calculator.shippingfee.EuclideanCalculator;
+import calculator.shippingfee.ShippingFeeCalculatorContext;
 
 public class DeliveryInfo {
 
@@ -11,23 +11,23 @@ public class DeliveryInfo {
     protected String province;
     protected String address;
     protected String shippingInstructions;
-    protected DistanceCalculator distanceCalculator;
+    protected ShippingFeeCalculatorContext shippingFeeCalculatorContext;
 
-    public DeliveryInfo(String name, String phone, String province, String address, String shippingInstructions, DistanceCalculator distanceCalculator) {
+    public DeliveryInfo(String name, String phone, String province, String address, String shippingInstructions, ShippingFeeCalculatorContext shippingFeeCalculatorContext) {
         this.name = name;
         this.phone = phone;
         this.province = province;
         this.address = address;
         this.shippingInstructions = shippingInstructions;
-        this.distanceCalculator = distanceCalculator;
+        this.shippingFeeCalculatorContext = shippingFeeCalculatorContext;
     }
 
     // SRP: Việc tính phí ship nên tách ra, vì có yêu cầu thay đổi cách tính. Đây không phải nhiệm vụ của class này.
     // OCP: Phụ thuộc trực tiếp distanceCalculator. Sau này có yêu cầu thay đổi cách tính thì phải vào sửa trực tiếp.
     // pthieu 18.4.2022
-    public int calculateShippingFee(Order order) {
-        int distance = distanceCalculator.calculateDistance(address, province);
-        return (int) (distance * 1.2);
+    public int calculateShippingFee() {
+        shippingFeeCalculatorContext.setStrategy(new EuclideanCalculator());
+        return shippingFeeCalculatorContext.calculate(address, province);
     }
 
     public String getName() {
