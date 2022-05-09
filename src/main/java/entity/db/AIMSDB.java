@@ -8,6 +8,9 @@ import java.util.logging.Logger;
 import java.sql.Connection;
 import utils.*;
 
+// singleton pattern: chỉ tạo 1 instance connection, tiết kiệm tài nguyên
+// subteam1 + subteam2
+// 9.5.2022
 public class AIMSDB {
 
 	private static Logger LOGGER = Utils.getLogger(Connection.class.getName());
