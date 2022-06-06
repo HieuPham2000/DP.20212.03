@@ -48,7 +48,7 @@ public class Media {
     // Vi phạm SRP: vì method này connect đến CSDL, không phải nhiệm vụ của class entity
     // pthieu 18.4.2022
     public int getQuantity() throws SQLException {
-        int updated_quantity = new MediaDAO().getMediaById(id).quantity;
+        int updated_quantity =  MediaDAO.getCurrentQuantity(id);
         this.quantity = updated_quantity;
         return updated_quantity;
     }

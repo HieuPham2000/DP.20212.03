@@ -1,5 +1,6 @@
 package controller;
 
+import calculator.shippingfee.EuclideanCalculator;
 import calculator.shippingfee.ShippingFeeCalculatorContext;
 import common.exception.InvalidDeliveryInfoException;
 import entity.invoice.Invoice;
@@ -70,7 +71,7 @@ public class PlaceOrderController extends BaseController {
                 String.valueOf(info.get("province")),
                 String.valueOf(info.get("address")),
                 String.valueOf(info.get("instructions")),
-                new ShippingFeeCalculatorContext());
+                new ShippingFeeCalculatorContext(new EuclideanCalculator()));
         System.out.println(deliveryInfo.getProvince());
         return deliveryInfo;
     }

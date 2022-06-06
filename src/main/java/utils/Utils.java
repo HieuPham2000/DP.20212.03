@@ -10,9 +10,10 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.logging.Logger;
 
-/**
- * @author nguyenlm Contains helper functions
- */
+// singleton pattern: chỉ tạo 1 instance logger
+// Để quản lý tập trung việc log vào file, đảm bảo config chung, tránh dụng độ...
+// subteam1 + subteam2
+// 9.5.2022
 public class Utils {
 
 	// COUPING-COHESION subteam 2: 2 biến DATE_FORMATTER và LOGGER không được sử dụng trong class -> co-incidental cohesion
