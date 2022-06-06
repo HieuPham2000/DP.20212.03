@@ -4,7 +4,8 @@ public class ShippingFeeCalculatorContext {
 
     private ShippingFeeCalculatorStrategy strategy;
 
-    public ShippingFeeCalculatorContext() {
+    public ShippingFeeCalculatorContext(ShippingFeeCalculatorStrategy strategy) {
+        this.strategy = strategy;
     }
 
     public void setStrategy(ShippingFeeCalculatorStrategy strategy) {

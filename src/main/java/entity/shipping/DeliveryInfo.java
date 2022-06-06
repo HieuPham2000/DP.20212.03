@@ -26,7 +26,6 @@ public class DeliveryInfo {
     // OCP: Phụ thuộc trực tiếp distanceCalculator. Sau này có yêu cầu thay đổi cách tính thì phải vào sửa trực tiếp.
     // pthieu 18.4.2022
     public int calculateShippingFee() {
-        shippingFeeCalculatorContext.setStrategy(new EuclideanCalculator());
         return shippingFeeCalculatorContext.calculate(address, province);
     }
 

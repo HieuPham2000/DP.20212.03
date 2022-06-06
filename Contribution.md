@@ -11,4 +11,7 @@
   - Nguyễn Đình Hùng: Refactor singleton design pattern trong class AIMSDB
   - Phạm Hữu Anh Quốc: Áp dụng Template method cho các class MediaDAO
 
-
+### Bài 3: Strategy Design Pattern
+- Subteam2:
+  - Nguyễn Đình Hùng: Refactor thiết kế sử dụng Strategy Pattern trong việc tính toán chi phí vận chuyển hàng
+  - Phạm Hữu Anh Quốc: Review kết quả refactor
