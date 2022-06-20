@@ -38,7 +38,7 @@ public class AuthenticationController extends BaseController {
 
     public void login(String email, String password) throws Exception {
         try {
-            User user = new UserDAO().authenticate(email, md5(password));
+            User user = new UserDAO().authenticate(email, genDigestByMd5(password));
             if (Objects.isNull(user)) throw new FailLoginException();
             SessionInformation.mainUser = user;
             SessionInformation.expiredTime = LocalDateTime.now().plusHours(24);
@@ -63,7 +63,7 @@ public class AuthenticationController extends BaseController {
      */
      // Vi phạm SRP: Không phải nhiệm vụ của lớp này
      // Sau này có thể sử dụng hàm băm khác...
-    private String md5(String message) {
+    private String genDigestByMd5(String message) {
         String digest = null;
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
