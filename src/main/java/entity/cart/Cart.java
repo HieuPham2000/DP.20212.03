@@ -15,15 +15,15 @@ public class Cart {
         lstCartItem = new ArrayList<>();
     }
 
-    public void addCartMedia(CartItem cm){
+    public void addCartMedia(CartItem cm) {
         lstCartItem.add(cm);
     }
 
-    public void removeCartMedia(CartItem cm){
+    public void removeCartMedia(CartItem cm) {
         lstCartItem.remove(cm);
     }
 
-    public List getListMedia(){
+    public List getListMedia() {
         return lstCartItem;
     }
 
@@ -31,7 +31,7 @@ public class Cart {
         lstCartItem.clear();
     }
 
-    public int getTotalMedia(){
+    public int getTotalMedia() {
         int total = 0;
         for (Object obj : lstCartItem) {
             CartItem cm = (CartItem) obj;
@@ -40,7 +40,7 @@ public class Cart {
         return total;
     }
 
-    public int calSubtotal(){
+    public int calSubtotal() {
         int total = 0;
         for (Object obj : lstCartItem) {
             CartItem cm = (CartItem) obj;
@@ -49,7 +49,7 @@ public class Cart {
         return total;
     }
 
-    public void checkAvailabilityOfProduct() throws SQLException{
+    public void checkAvailabilityOfProduct() throws SQLException {
         boolean allAvailable = true;
         for (Object object : lstCartItem) {
             CartItem cartItem = (CartItem) object;
@@ -63,7 +63,7 @@ public class Cart {
     // Stamp coupling
     // Chỉ dùng id nhưng truyền cả Media
     // nmtuan (subtem1)
-    public CartItem checkMediaInCart(Media media){
+    public CartItem checkMediaInCart(Media media) {
         for (CartItem cartItem : lstCartItem) {
             if (cartItem.getMedia().getId() == media.getId()) return cartItem;
         }

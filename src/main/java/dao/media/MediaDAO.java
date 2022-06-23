@@ -59,13 +59,4 @@ public abstract class MediaDAO {
     }
 
 
-    public void updateMediaFieldById(String tbname, int id, String field, Object value) throws SQLException {
-        Statement stm = AIMSDB.getConnection().createStatement();
-        if (value instanceof String){
-            value = "\"" + value + "\"";
-        }
-        stm.executeUpdate(" update Media set" + " "
-                + field + "=" + value + " "
-                + "where id=" + id + ";");
-    }
 }

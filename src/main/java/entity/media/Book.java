@@ -1,12 +1,7 @@
 package entity.media;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Date;
-import java.util.List;
-
-import entity.db.AIMSDB;
 
 public class Book extends Media {
 
@@ -17,10 +12,6 @@ public class Book extends Media {
     int numOfPages;
     String language;
     String bookCategory;
-
-    public Book() throws SQLException{
-
-    }
 
     public Book(int id, String title, String category, int price, int quantity, String type, String author,
             String coverType, String publisher, Date publishDate, int numOfPages, String language,

@@ -49,14 +49,11 @@ public class LoginScreenHandler extends BaseScreenHandler{
     @FXML
     private PasswordField password;
 
-    public LoginScreenHandler(Stage stage, String screenPath) throws IOException{
+    public LoginScreenHandler(Stage stage, String screenPath) throws IOException {
         super(stage, screenPath);
         try {
             setupData(null);
             setupFunctionality();
-        } catch (IOException ex) {
-            LOGGER.info(ex.getMessage());
-            PopupScreen.error("Error when loading resources.");
         } catch (Exception ex) {
             LOGGER.info(ex.getMessage());
             PopupScreen.error(ex.getMessage());
@@ -67,14 +64,14 @@ public class LoginScreenHandler extends BaseScreenHandler{
         return (AuthenticationController) super.getBController();
     }
 
-    protected void setupData(Object dto) throws Exception {
+    protected void setupData(Object dto) {
     }
 
-    protected void setupFunctionality() throws Exception {
+    protected void setupFunctionality() {
     }
 
     @FXML
-    void login(MouseEvent event) throws IOException, InterruptedException, SQLException {
+    void login(MouseEvent event) throws IOException {
         try {
             getBController().login(email.getText(), password.getText());
             PopupScreen.success("Login Successfully!");
@@ -85,7 +82,7 @@ public class LoginScreenHandler extends BaseScreenHandler{
     }
 
     @FXML
-    void backToHomeScreen(MouseEvent event) throws IOException, InterruptedException, SQLException {
+    void backToHomeScreen(MouseEvent event) {
         this.homeScreenHandler.show();
     }
 }

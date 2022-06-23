@@ -36,7 +36,7 @@ public class AuthenticationController extends BaseController {
         } else return SessionInformation.mainUser.cloneInformation();
     }
 
-    public void login(String email, String password) throws Exception {
+    public void login(String email, String password) {
         try {
             User user = new UserDAO().authenticate(email, genDigestByMd5(password));
             if (Objects.isNull(user)) throw new FailLoginException();

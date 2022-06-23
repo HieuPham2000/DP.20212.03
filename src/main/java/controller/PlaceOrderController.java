@@ -79,10 +79,8 @@ public class PlaceOrderController extends BaseController {
     /**
    * The method validates the info
    * @param info
-   * @throws InterruptedException
-   * @throws IOException
-   */
-    public void validateDeliveryInfo(HashMap<String, String> info) throws InterruptedException, IOException, InvalidDeliveryInfoException {
+     */
+    public void validateDeliveryInfo(HashMap<String, String> info) throws InvalidDeliveryInfoException {
         if (validatePhoneNumber(info.get("phone"))
         || validateName(info.get("name"))
         || validateAddress(info.get("address"))) return;

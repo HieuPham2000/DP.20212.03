@@ -222,6 +222,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
         int requestQuantity = mediaHandler.getRequestQuantity();
         Media media = mediaHandler.getMedia();
 
+        String errorMessage = "Cannot add media to cart: ";
         try {
             if (requestQuantity > media.getQuantity()) throw new MediaNotAvailableException();
             Cart cart = SessionInformation.cartInstance;
@@ -245,11 +246,11 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
                 LOGGER.severe(message);
                 PopupScreen.error(message);
             } catch (Exception e) {
-                LOGGER.severe("Cannot add media to cart: ");
+                LOGGER.severe(errorMessage);
             }
 
         } catch (Exception exp) {
-            LOGGER.severe("Cannot add media to cart: ");
+            LOGGER.severe(errorMessage);
             exp.printStackTrace();
         }
     }

@@ -55,9 +55,9 @@ public class PaymentController extends BaseController {
 			throw new InvalidCardException();
 		}
 
-		String expirationDate = null;
-		int month = -1;
-		int year = -1;
+		String expirationDate;
+		int month;
+		int year;
 
 		try {
 			month = Integer.parseInt(dateSplitStrs[0]);

@@ -32,6 +32,7 @@ public class ViewsConfig {
     public static final String HOME_PATH  = "/views/fxml/home.fxml";
     public static final String HOME_MEDIA_PATH = "/views/fxml/media_home.fxml";
     public static final String POPUP_PATH = "/views/fxml/popup.fxml";
+    public static final String LOGO_PATH = "src/main/resources/assets/images/Logo.png";
 
     public static float PERCENT_VAT = 10;
 

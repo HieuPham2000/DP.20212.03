@@ -18,12 +18,6 @@ public class Order {
     private List orderMediaList;
     protected DeliveryInfo deliveryInfo;
 
-    public Order() {
-        this.shippingFees = 0;
-        this.subtotal = 0;
-        this.tax = 0;
-    }
-
     public Order(Cart cart) {
         List<OrderItem> orderItems = new ArrayList<>();
         for (Object object : SessionInformation.cartInstance.getListMedia()) {
@@ -56,16 +50,8 @@ public class Order {
         this.shippingFees = deliveryInfo.calculateShippingFee();
     }
 
-    public List getOrderMediaList() {
-        return orderMediaList;
-    }
-
     public int getSubtotal() {
         return subtotal;
-    }
-
-    public int getTax() {
-        return tax;
     }
 
     public int getTotal() {
