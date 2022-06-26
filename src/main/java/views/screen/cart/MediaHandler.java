@@ -1,15 +1,8 @@
 package views.screen.cart;
 
-import java.io.File;
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.Arrays;
-import java.util.logging.Logger;
-
 import common.exception.MediaUpdateException;
 import common.exception.ViewCartException;
 import controller.SessionInformation;
-import entity.cart.Cart;
 import entity.cart.CartItem;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -24,6 +17,12 @@ import javafx.scene.layout.VBox;
 import utils.Utils;
 import views.screen.FXMLScreenHandler;
 import views.screen.ViewsConfig;
+
+import java.io.File;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.logging.Logger;
 
 public class MediaHandler extends FXMLScreenHandler {
 

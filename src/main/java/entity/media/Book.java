@@ -1,6 +1,5 @@
 package entity.media;
 
-import java.sql.SQLException;
 import java.util.Date;
 
 public class Book extends Media {
@@ -15,7 +14,7 @@ public class Book extends Media {
 
     public Book(int id, String title, String category, int price, int quantity, String type, String author,
             String coverType, String publisher, Date publishDate, int numOfPages, String language,
-            String bookCategory) throws SQLException {
+            String bookCategory) {
         super(id, title, category, price, quantity, type);
         this.author = author;
         this.coverType = coverType;

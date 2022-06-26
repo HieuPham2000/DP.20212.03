@@ -1,6 +1,5 @@
 package entity.media;
 
-import java.sql.SQLException;
 import java.util.Date;
 
 public class CD extends Media {
@@ -11,7 +10,7 @@ public class CD extends Media {
     Date releasedDate;
 
     public CD(int id, String title, String category, int price, int quantity, String type, String artist,
-            String recordLabel, String musicType, Date releasedDate) throws SQLException{
+            String recordLabel, String musicType, Date releasedDate) {
         super(id, title, category, price, quantity, type);
         this.artist = artist;
         this.recordLabel = recordLabel;

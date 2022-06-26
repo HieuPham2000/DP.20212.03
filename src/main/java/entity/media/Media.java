@@ -14,9 +14,6 @@ import java.util.logging.Logger;
  */
 public class Media {
 
-    private static Logger LOGGER = Utils.getLogger(Media.class.getName());
-
-    protected Statement stm;
     protected int id;
     protected String title;
     protected String category;
@@ -25,13 +22,8 @@ public class Media {
     protected int quantity;
     protected String type;
     protected String imageURL;
-    protected boolean rushSupported;
 
-    public Media() throws SQLException {
-        stm = AIMSDB.getConnection().createStatement();
-    }
-
-    public Media (int id, String title, String category, int price, int quantity, String type) throws SQLException{
+    public Media(int id, String title, String category, int price, int quantity, String type) {
         this.id = id;
         this.title = title;
         this.category = category;
@@ -40,7 +32,7 @@ public class Media {
         this.type = type;
     }
 
-    public Media(int id, String title, int quantity, String category, String imageUrl, int price, String type) throws SQLException {
+    public Media(int id, String title, int quantity, String category, String imageUrl, int price, String type) {
         this(id, title, category, price, quantity, type);
         this.imageURL = imageUrl;
     }
@@ -48,7 +40,7 @@ public class Media {
     // Vi phạm SRP: vì method này connect đến CSDL, không phải nhiệm vụ của class entity
     // pthieu 18.4.2022
     public int getQuantity() throws SQLException {
-        int updated_quantity =  MediaDAO.getCurrentQuantity(id);
+        int updated_quantity = MediaDAO.getCurrentQuantity(id);
         this.quantity = updated_quantity;
         return updated_quantity;
     }
