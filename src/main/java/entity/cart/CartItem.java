@@ -8,7 +8,7 @@ public class CartItem {
     private int quantity;
     private int price;
 
-    public CartItem(){
+    public CartItem() {
 
     }
 

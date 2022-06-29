@@ -1,19 +1,17 @@
 package views.screen.intro;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-import java.util.logging.Logger;
-
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import utils.Utils;
 import views.screen.BaseScreenHandler;
+import views.screen.ViewsConfig;
 import views.screen.popup.PopupScreen;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Logger;
 
 public class IntroScreenHandler extends BaseScreenHandler {
 
@@ -46,8 +44,8 @@ public class IntroScreenHandler extends BaseScreenHandler {
         return;
     }
 
-    protected void setupFunctionality() throws Exception {
-        File file = new File("src/main/resources/assets/images/Logo.png");
+    protected void setupFunctionality() {
+        File file = new File(ViewsConfig.LOGO_PATH);
         Image image = new Image(file.toURI().toString());
         logo.setImage(image);
     }

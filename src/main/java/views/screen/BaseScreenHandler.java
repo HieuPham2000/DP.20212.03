@@ -1,18 +1,14 @@
 package views.screen;
 
-import java.io.IOException;
-import java.util.Hashtable;
-import java.util.List;
-import java.util.logging.Logger;
-
-import controller.AuthenticationController;
 import controller.BaseController;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import utils.Utils;
 import views.screen.home.HomeScreenHandler;
-import views.screen.popup.PopupScreen;
+
+import java.io.IOException;
+import java.util.Hashtable;
+import java.util.logging.Logger;
 
 public abstract class BaseScreenHandler extends FXMLScreenHandler {
 

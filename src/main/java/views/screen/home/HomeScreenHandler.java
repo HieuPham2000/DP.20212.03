@@ -2,13 +2,10 @@ package views.screen.home;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
-import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
 import common.exception.MediaNotAvailableException;
@@ -20,7 +17,6 @@ import entity.cart.Cart;
 import entity.cart.CartItem;
 import entity.media.Media;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -101,11 +97,11 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
         setBController(new HomeController());
         this.authenticationController = new AuthenticationController();
         try{
-            List medium = getBController().getAllMedia();
+            List media = getBController().getAllMedia();
             this.homeItems = new ArrayList<>();
-            for (Object object : medium) {
-                Media media = (Media)object;
-                MediaHandler m = new MediaHandler(ViewsConfig.HOME_MEDIA_PATH, media);
+            for (Object object : media) {
+                Media me = (Media) object;
+                MediaHandler m = new MediaHandler(ViewsConfig.HOME_MEDIA_PATH, me);
                 m.attach(this);
                 this.homeItems.add(m);
             }
@@ -149,7 +145,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
             btnLogin.setOnMouseClicked(event -> {});
         }
 
-        numMediaInCart.setText(String.valueOf(SessionInformation.cartInstance.getListMedia().size()) + " media");
+        numMediaInCart.setText(SessionInformation.cartInstance.getListMedia().size() + " media");
         super.show();
     }
 
@@ -198,7 +194,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
                 vBox.getChildren().clear();
             });
 
-            // filter only media with the choosen category
+            // filter only media with the chosen category
             List filteredItems = new ArrayList<>();
             homeItems.forEach(me -> {
                 MediaHandler media = (MediaHandler) me;
@@ -207,7 +203,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
                 }
             });
 
-            // fill out the home with filted media as category
+            // fill out the home with filed media as category
             addMediaHome(filteredItems);
         });
         menuButton.getItems().add(position, menuItem);
@@ -222,6 +218,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
         int requestQuantity = mediaHandler.getRequestQuantity();
         Media media = mediaHandler.getMedia();
 
+        String errorMessage = "Cannot add media to cart: ";
         try {
             if (requestQuantity > media.getQuantity()) throw new MediaNotAvailableException();
             Cart cart = SessionInformation.cartInstance;
@@ -245,11 +242,11 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
                 LOGGER.severe(message);
                 PopupScreen.error(message);
             } catch (Exception e) {
-                LOGGER.severe("Cannot add media to cart: ");
+                LOGGER.severe(errorMessage);
             }
 
         } catch (Exception exp) {
-            LOGGER.severe("Cannot add media to cart: ");
+            LOGGER.severe(errorMessage);
             exp.printStackTrace();
         }
     }

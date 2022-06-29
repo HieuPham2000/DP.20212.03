@@ -1,6 +1,5 @@
 package entity.shipping;
 
-import calculator.shippingfee.EuclideanCalculator;
 import calculator.shippingfee.ShippingFeeCalculatorContext;
 
 public class DeliveryInfo {

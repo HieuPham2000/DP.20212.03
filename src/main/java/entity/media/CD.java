@@ -1,9 +1,6 @@
 package entity.media;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Date;
-import java.util.List;
 
 public class CD extends Media {
 
@@ -12,12 +9,8 @@ public class CD extends Media {
     String musicType;
     Date releasedDate;
 
-    public CD() throws SQLException{
-
-    }
-
     public CD(int id, String title, String category, int price, int quantity, String type, String artist,
-            String recordLabel, String musicType, Date releasedDate) throws SQLException{
+            String recordLabel, String musicType, Date releasedDate) {
         super(id, title, category, price, quantity, type);
         this.artist = artist;
         this.recordLabel = recordLabel;

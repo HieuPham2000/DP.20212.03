@@ -7,11 +7,7 @@ public class Invoice {
     private Order order;
     private int amount;
     
-    public Invoice(){
-
-    }
-
-    public Invoice(Order order){
+    public Invoice(Order order) {
         this.order = order;
         this.amount = order.getTotal();
     }
@@ -28,7 +24,4 @@ public class Invoice {
         return amount;
     }
 
-    public void saveInvoice(){
-        
-    }
 }

@@ -19,8 +19,7 @@ import java.util.logging.Logger;
 
 public class ApplicationProgrammingInterface {
 
-	public static DateFormat DATE_FORMATTER = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-	private static Logger LOGGER = Utils.getLogger(Utils.class.getName());
+	private static final Logger LOGGER = Utils.getLogger(Utils.class.getName());
 
 	/*
 	COUPING-COHESION subteam 2: Method get và post của class này đang có LOGICAL COHESION
@@ -39,13 +38,13 @@ public class ApplicationProgrammingInterface {
 		conn.setRequestProperty("Authorization", "Bearer " + token);
 		BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 		String inputLine;
-		StringBuilder respone = new StringBuilder(); // ising StringBuilder for the sake of memory and performance
+		StringBuilder response = new StringBuilder(); // using StringBuilder for the sake of memory and performance
 		while ((inputLine = in.readLine()) != null)
 			System.out.println(inputLine);
-		respone.append(inputLine + "\n");
+		response.append(inputLine + "\n");
 		in.close();
-		LOGGER.info("Respone Info: " + respone.substring(0, respone.length() - 1).toString());
-		return respone.substring(0, respone.length() - 1).toString();
+		LOGGER.info("Response Info: " + response.substring(0, response.length() - 1));
+		return response.substring(0, response.length() - 1);
 	}
 
 	public static String post(String url, String data) throws IOException {
@@ -69,7 +68,7 @@ public class ApplicationProgrammingInterface {
 		while ((inputLine = in.readLine()) != null)
 			response.append(inputLine);
 		in.close();
-		LOGGER.info("Respone Info: " + response.toString());
+		LOGGER.info("Response Info: " + response);
 		return response.toString();
 	}
 

@@ -3,6 +3,7 @@ package dao.media;
 import entity.db.AIMSDB;
 import entity.media.Media;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -33,8 +34,9 @@ public abstract class MediaDAO {
     }
 
     public static int getCurrentQuantity(int id) throws SQLException {
-        String sql = "SELECT * FROM Media ;";
-        Statement stm = AIMSDB.getConnection().createStatement();
+        String sql = "SELECT * FROM Media WHERE id = ?";
+        PreparedStatement stm = AIMSDB.getConnection().prepareStatement(sql);
+        stm.setInt(1, id);
         ResultSet res = stm.executeQuery(sql);
 
         if (res.next()) {
@@ -59,13 +61,4 @@ public abstract class MediaDAO {
     }
 
 
-    public void updateMediaFieldById(String tbname, int id, String field, Object value) throws SQLException {
-        Statement stm = AIMSDB.getConnection().createStatement();
-        if (value instanceof String){
-            value = "\"" + value + "\"";
-        }
-        stm.executeUpdate(" update Media set" + " "
-                + field + "=" + value + " "
-                + "where id=" + id + ";");
-    }
 }

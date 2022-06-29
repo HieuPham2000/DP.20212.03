@@ -72,9 +72,4 @@ public class PopupScreen extends BaseScreenHandler {
         delay.play();
     }
 
-    protected void setupData(Object dto) throws Exception {
-    }
-
-    protected void setupFunctionality() throws Exception {
-    }
 }
