@@ -2,7 +2,7 @@ package subsystem;
 
 import common.exception.PaymentException;
 import common.exception.UnrecognizedException;
-import entity.payment.CreditCard;
+import entity.payment.PaymentCard;
 import entity.payment.PaymentTransaction;
 
 /**
@@ -26,7 +26,7 @@ public interface InterbankInterface {
 	 * @throws UnrecognizedException if responded with an unknown error code or
 	 *                               something goes wrong
 	 */
-	PaymentTransaction payOrder(CreditCard card, int amount, String contents)
+	PaymentTransaction payOrder(PaymentCard card, int amount, String contents)
 			throws PaymentException, UnrecognizedException;
 
 	/**
@@ -45,7 +45,7 @@ public interface InterbankInterface {
 	/*
 	 Vi phạm ISP do trong tương lai có thể phải thay đổi hệ thống thanh toán khác không có cơ chế hoàn tiền (refund method)
 	*/
-	PaymentTransaction refund(CreditCard card, int amount, String contents)
+	PaymentTransaction refund(PaymentCard card, int amount, String contents)
 			throws PaymentException, UnrecognizedException;
 
 }
