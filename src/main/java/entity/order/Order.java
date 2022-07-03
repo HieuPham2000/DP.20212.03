@@ -1,5 +1,7 @@
 package entity.order;
 
+import calculator.shippingfee.EuclideanCalculator;
+import calculator.shippingfee.ShippingFeeCalculatorContext;
 import controller.SessionInformation;
 import entity.cart.Cart;
 import entity.cart.CartItem;
@@ -16,7 +18,8 @@ public class Order {
     private int subtotal;
     private int tax;
     private List orderMediaList;
-    protected DeliveryInfo deliveryInfo;
+    private DeliveryInfo deliveryInfo;
+    private ShippingFeeCalculatorContext shippingFeeCalculator;
 
     public Order(Cart cart) {
         List<OrderItem> orderItems = new ArrayList<>();
@@ -30,6 +33,7 @@ public class Order {
         this.orderMediaList = Collections.unmodifiableList(orderItems);
         this.subtotal = cart.calSubtotal();
         this.tax = (int) (ViewsConfig.PERCENT_VAT/100) * subtotal;
+        this.shippingFeeCalculator = new ShippingFeeCalculatorContext(new EuclideanCalculator());
     }
 
     public List getListOrderMedia() {
@@ -47,7 +51,7 @@ public class Order {
 
     public void setDeliveryInfo(DeliveryInfo deliveryInfo) {
         this.deliveryInfo = deliveryInfo;
-        this.shippingFees = deliveryInfo.calculateShippingFee();
+        this.shippingFees = shippingFeeCalculator.calculate(this);
     }
 
     public int getSubtotal() {
@@ -57,4 +61,13 @@ public class Order {
     public int getTotal() {
         return this.subtotal + this.tax + this.shippingFees;
     }
+
+    public String getFromAddress() {
+        return deliveryInfo.getFromAddress();
+    }
+
+    public String getToAddress() {
+        return deliveryInfo.getAddress() + deliveryInfo.getProvince();
+    }
+
 }

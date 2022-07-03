@@ -1,31 +1,21 @@
 package entity.shipping;
 
-import calculator.shippingfee.ShippingFeeCalculatorContext;
-
 public class DeliveryInfo {
 
 	// content coupling: nên để private
-    protected String name;
-    protected String phone;
-    protected String province;
-    protected String address;
-    protected String shippingInstructions;
-    protected ShippingFeeCalculatorContext shippingFeeCalculatorContext;
+    private String name;
+    private String phone;
+    private String province;
+    private String address;
+    private String shippingInstructions;
+    private String fromAddress = "Hà Nội";
 
-    public DeliveryInfo(String name, String phone, String province, String address, String shippingInstructions, ShippingFeeCalculatorContext shippingFeeCalculatorContext) {
+    public DeliveryInfo(String name, String phone, String province, String address, String shippingInstructions) {
         this.name = name;
         this.phone = phone;
         this.province = province;
         this.address = address;
         this.shippingInstructions = shippingInstructions;
-        this.shippingFeeCalculatorContext = shippingFeeCalculatorContext;
-    }
-
-    // SRP: Việc tính phí ship nên tách ra, vì có yêu cầu thay đổi cách tính. Đây không phải nhiệm vụ của class này.
-    // OCP: Phụ thuộc trực tiếp distanceCalculator. Sau này có yêu cầu thay đổi cách tính thì phải vào sửa trực tiếp.
-    // pthieu 18.4.2022
-    public int calculateShippingFee() {
-        return shippingFeeCalculatorContext.calculate(address, province);
     }
 
     public String getName() {
@@ -46,5 +36,9 @@ public class DeliveryInfo {
 
     public String getShippingInstructions() {
         return shippingInstructions;
+    }
+
+    public String getFromAddress() {
+        return fromAddress;
     }
 }

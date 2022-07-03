@@ -1,7 +1,5 @@
 package controller;
 
-import calculator.shippingfee.EuclideanCalculator;
-import calculator.shippingfee.ShippingFeeCalculatorContext;
 import common.exception.InvalidDeliveryInfoException;
 import entity.invoice.Invoice;
 import entity.order.Order;
@@ -9,7 +7,8 @@ import entity.shipping.DeliveryInfo;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Objects;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -70,8 +69,7 @@ public class PlaceOrderController extends BaseController {
                 String.valueOf(info.get("phone")),
                 String.valueOf(info.get("province")),
                 String.valueOf(info.get("address")),
-                String.valueOf(info.get("instructions")),
-                new ShippingFeeCalculatorContext(new EuclideanCalculator()));
+                String.valueOf(info.get("instructions")));
         System.out.println(deliveryInfo.getProvince());
         return deliveryInfo;
     }

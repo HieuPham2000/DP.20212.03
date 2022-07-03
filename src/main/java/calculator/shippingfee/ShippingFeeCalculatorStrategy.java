@@ -1,7 +1,9 @@
 package calculator.shippingfee;
 
+import entity.order.Order;
+
 public interface ShippingFeeCalculatorStrategy {
 
-    int calculate(String from, String to);
+    int calculate(Order order);
 
 }
