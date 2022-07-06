@@ -8,7 +8,6 @@ public class DeliveryInfo {
     private String province;
     private String address;
     private String shippingInstructions;
-    private String fromAddress = "Hà Nội";
 
     public DeliveryInfo(String name, String phone, String province, String address, String shippingInstructions) {
         this.name = name;
@@ -38,7 +37,4 @@ public class DeliveryInfo {
         return shippingInstructions;
     }
 
-    public String getFromAddress() {
-        return fromAddress;
-    }
 }

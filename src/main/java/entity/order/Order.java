@@ -1,7 +1,9 @@
 package entity.order;
 
-import calculator.shippingfee.EuclideanCalculator;
+import calculator.distance.EuclideanCalculator;
+import calculator.shippingfee.DistanceBaseStrategy;
 import calculator.shippingfee.ShippingFeeCalculatorContext;
+import calculator.shippingfee.ShippingFeeCalculatorStrategy;
 import controller.SessionInformation;
 import entity.cart.Cart;
 import entity.cart.CartItem;
@@ -33,7 +35,8 @@ public class Order {
         this.orderMediaList = Collections.unmodifiableList(orderItems);
         this.subtotal = cart.calSubtotal();
         this.tax = (int) (ViewsConfig.PERCENT_VAT/100) * subtotal;
-        this.shippingFeeCalculator = new ShippingFeeCalculatorContext(new EuclideanCalculator());
+        ShippingFeeCalculatorStrategy strategy = new DistanceBaseStrategy(new EuclideanCalculator());
+        this.shippingFeeCalculator = new ShippingFeeCalculatorContext(strategy);
     }
 
     public List getListOrderMedia() {
@@ -41,7 +44,9 @@ public class Order {
     }
 
     public int getShippingFees() {
-        if (deliveryInfo == null) return 0;
+        if (deliveryInfo == null) {
+            throw new RuntimeException("Order has no delivery information");
+        }
         return this.shippingFees;
     }
 
@@ -62,12 +67,12 @@ public class Order {
         return this.subtotal + this.tax + this.shippingFees;
     }
 
-    public String getFromAddress() {
-        return deliveryInfo.getFromAddress();
+    public String getProvince() {
+        return this.deliveryInfo.getProvince();
     }
 
-    public String getToAddress() {
-        return deliveryInfo.getAddress() + deliveryInfo.getProvince();
+    public String getAddress() {
+        return this.deliveryInfo.getAddress();
     }
 
 }
