@@ -27,7 +27,7 @@ public class ResultScreenHandler extends BaseScreenHandler {
 			setupFunctionality();
 		} catch (IOException ex) {
 			LOGGER.info(ex.getMessage());
-			handleIOException();
+			handleIOException(ex);
 		} catch (Exception ex) {
 			LOGGER.info(ex.getMessage());
 			PopupScreen.error(ex.getMessage());

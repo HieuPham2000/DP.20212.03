@@ -4,8 +4,10 @@ import dao.media.MediaDAO;
 import entity.db.AIMSDB;
 import utils.Utils;
 
+import java.lang.reflect.Field;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.*;
 import java.util.logging.Logger;
 
 /**
@@ -35,6 +37,25 @@ public class Media {
     public Media(int id, String title, int quantity, String category, String imageUrl, int price, String type) {
         this(id, title, category, price, quantity, type);
         this.imageURL = imageUrl;
+    }
+
+    public Map<String, Object> getAttributesAndValues() {
+        Map<String, Object> map = new HashMap<>();
+        try {
+            Field[] parentFields = this.getClass().getSuperclass().getDeclaredFields();
+            Field[] objectFields = this.getClass().getDeclaredFields();
+            for (Field field : parentFields) {
+                field.setAccessible(true);
+                map.put(field.getName(), field.get(this));
+            }
+            for (Field field : objectFields) {
+                field.setAccessible(true);
+                map.put(field.getName(), field.get(this));
+            }
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return map;
     }
 
     // Vi phạm SRP: vì method này connect đến CSDL, không phải nhiệm vụ của class entity

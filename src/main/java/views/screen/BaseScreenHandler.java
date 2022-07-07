@@ -68,8 +68,9 @@ public abstract class BaseScreenHandler extends FXMLScreenHandler {
 		this.homeScreenHandler = HomeScreenHandler;
 	}
 
-	protected void handleIOException() {
+	protected void handleIOException(IOException ioException) {
 		try {
+			System.out.println(ioException.getMessage());
 			PopupScreen.error("Error when loading resources.");
 		} catch (Exception e) {
 			e.printStackTrace();
