@@ -7,6 +7,7 @@ import calculator.shippingfee.ShippingFeeCalculatorStrategy;
 import controller.SessionInformation;
 import entity.cart.Cart;
 import entity.cart.CartItem;
+import entity.order.state.OrderState;
 import entity.shipping.DeliveryInfo;
 import views.screen.ViewsConfig;
 
@@ -22,6 +23,7 @@ public class Order {
     private List orderMediaList;
     private DeliveryInfo deliveryInfo;
     private ShippingFeeCalculatorContext shippingFeeCalculator;
+    private OrderState state;
 
     public Order(Cart cart) {
         List<OrderItem> orderItems = new ArrayList<>();
@@ -73,6 +75,22 @@ public class Order {
 
     public String getAddress() {
         return this.deliveryInfo.getAddress();
+    }
+
+    public OrderState getState() {
+        return state;
+    }
+
+    public void setState(OrderState state) {
+        this.state = state;
+    }
+
+    public void payOrder() {
+        state.payOrder();
+    }
+
+    public void cancelOrder() {
+        state.cancelOrder();
     }
 
 }

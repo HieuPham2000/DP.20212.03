@@ -78,7 +78,9 @@ public class PaymentScreenHandler extends BaseScreenHandler {
 		PaymentController ctrl = (PaymentController) getBController();
 		Map<String, String> response = ctrl.payOrder(invoice.getAmount(), contents, cardNumber.getText(), holderName.getText(),
 				expirationDate.getText(), securityCode.getText());
-
+		if (response.get("RESULT").equals(PaymentController.PAYMENT_SUCCESSFUL)) {
+			invoice.payOrder();
+		}
 		BaseScreenHandler resultScreen = new ResultScreenHandler(this.stage, ViewsConfig.RESULT_SCREEN_PATH, response);
 		resultScreen.setPreviousScreen(this);
 		resultScreen.setHomeScreenHandler(homeScreenHandler);
