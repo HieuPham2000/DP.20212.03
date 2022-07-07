@@ -25,6 +25,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import utils.MediaTypesHolder;
 import utils.Utils;
 import views.screen.BaseScreenHandler;
 import views.screen.ViewsConfig;
@@ -130,9 +131,10 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
             }
         });
         addMediaHome(this.homeItems);
-        addMenuItem(0, "Book", splitMenuBtnSearch);
-        addMenuItem(1, "DVD", splitMenuBtnSearch);
-        addMenuItem(2, "CD", splitMenuBtnSearch);
+
+        for (int i = 0; i < MediaTypesHolder.MEDIA_TYPES.size(); i++) {
+            addMenuItem(i, MediaTypesHolder.MEDIA_TYPES.get(i), splitMenuBtnSearch);
+        }
     }
 
     @Override
