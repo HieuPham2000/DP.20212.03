@@ -1,4 +1,4 @@
-package utils;
+package views.screen;
 
 import entity.media.Media;
 import org.reflections.Reflections;

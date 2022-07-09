@@ -4,7 +4,6 @@ import common.exception.ExpiredSessionException;
 import common.exception.FailLoginException;
 import dao.user.UserDAO;
 import entity.user.User;
-import utils.MessageDigestUtils;
 
 import java.sql.SQLException;
 import java.time.LocalDateTime;
