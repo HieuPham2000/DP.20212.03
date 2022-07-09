@@ -32,7 +32,7 @@ public class IntroScreenHandler extends BaseScreenHandler {
             setupFunctionality();
         } catch (IOException ex) {
             LOGGER.info(ex.getMessage());
-            PopupScreen.error("Error when loading resources.");
+            handleIOException(ex);
         } catch (Exception ex) {
             LOGGER.info(ex.getMessage());
             PopupScreen.error(ex.getMessage());

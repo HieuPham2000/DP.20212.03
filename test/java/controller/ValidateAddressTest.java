@@ -24,7 +24,7 @@ public class ValidateAddressTest {
             "true, null"
     })
     void test(boolean expected, String address) {
-        boolean isValid = placeOrderController.validateAddress(address);
+        boolean isValid = Validator.validateAddress(address);
         assertEquals(expected, isValid);
     }
 }

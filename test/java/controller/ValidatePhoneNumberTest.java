@@ -23,7 +23,7 @@ public class ValidatePhoneNumberTest {
             "false, 1234567890"
     })
     void test(boolean expected, String phoneNumber) {
-        boolean isValid = placeOrderController.validatePhoneNumber(phoneNumber);
+        boolean isValid = Validator.validatePhoneNumber(phoneNumber);
         assertEquals(expected, isValid);
     }
 }

@@ -4,10 +4,10 @@ import java.util.Date;
 
 public class CD extends Media {
 
-    String artist;
-    String recordLabel;
-    String musicType;
-    Date releasedDate;
+    private String artist;
+    private String recordLabel;
+    private String musicType;
+    private Date releasedDate;
 
     public CD(int id, String title, String category, int price, int quantity, String type, String artist,
             String recordLabel, String musicType, Date releasedDate) {

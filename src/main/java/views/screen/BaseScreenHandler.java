@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import utils.Utils;
 import views.screen.home.HomeScreenHandler;
+import views.screen.popup.PopupScreen;
 
 import java.io.IOException;
 import java.util.Hashtable;
@@ -65,6 +66,15 @@ public abstract class BaseScreenHandler extends FXMLScreenHandler {
 
 	public void setHomeScreenHandler(HomeScreenHandler HomeScreenHandler) {
 		this.homeScreenHandler = HomeScreenHandler;
+	}
+
+	protected void handleIOException(IOException ioException) {
+		try {
+			System.out.println(ioException.getMessage());
+			PopupScreen.error("Error when loading resources.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

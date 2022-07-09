@@ -24,4 +24,12 @@ public class Invoice {
         return amount;
     }
 
+    public void payOrder() {
+        order.payOrder();
+    }
+
+    public void cancelOrder() {
+        order.cancelOrder();
+    }
+
 }

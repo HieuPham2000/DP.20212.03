@@ -3,13 +3,13 @@ package entity.payment;
 public class PaymentTransaction {
 	private String errorCode;
 	// Vi phạm OCP: Phụ thuộc trực tiếp CreditCard, do có yêu cầu thêm phương thức thanh toán mới (DomesticCard)
-	private CreditCard card;
+	private PaymentCard card;
 	private String transactionId;
 	private String transactionContent;
 	private int amount;
 	private String createdAt;
 	
-	public PaymentTransaction(String errorCode, CreditCard card, String transactionId, String transactionContent,
+	public PaymentTransaction(String errorCode, PaymentCard card, String transactionId, String transactionContent,
                               int amount, String createdAt) {
 		super();
 		this.errorCode = errorCode;

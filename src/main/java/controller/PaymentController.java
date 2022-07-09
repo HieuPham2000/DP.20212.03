@@ -1,17 +1,17 @@
 package controller;
 
-import java.util.Calendar;
-import java.util.Hashtable;
-import java.util.Map;
-
 import common.exception.InvalidCardException;
 import common.exception.PaymentException;
 import common.exception.UnrecognizedException;
-import entity.cart.Cart;
 import entity.payment.CreditCard;
+import entity.payment.PaymentCard;
 import entity.payment.PaymentTransaction;
 import subsystem.InterbankInterface;
 import subsystem.InterbankSubsystem;
+
+import java.util.Calendar;
+import java.util.Hashtable;
+import java.util.Map;
 
 
 /**
@@ -27,10 +27,12 @@ import subsystem.InterbankSubsystem;
  */
 public class PaymentController extends BaseController {
 
+	public static final String PAYMENT_SUCCESSFUL = "PAYMENT SUCCESSFUL!";
+	public static final String PAYMENT_FAILED = "PAYMENT FAILED!";
 	/**
 	 * Represent the card used for payment
 	 */
-	private CreditCard card;
+	private PaymentCard card;
 
 	/**
 	 * Represent the Interbank subsystem
@@ -89,7 +91,7 @@ public class PaymentController extends BaseController {
 	public Map<String, String> payOrder(int amount, String contents, String cardNumber, String cardHolderName,
 			String expirationDate, String securityCode) {
 		Map<String, String> result = new Hashtable<String, String>();
-		result.put("RESULT", "PAYMENT FAILED!");
+		result.put("RESULT", PAYMENT_FAILED);
 		try {
 			this.card = new CreditCard(
 					cardNumber,
@@ -100,7 +102,7 @@ public class PaymentController extends BaseController {
 			this.interbank = new InterbankSubsystem();
 			PaymentTransaction transaction = interbank.payOrder(card, amount, contents);
 
-			result.put("RESULT", "PAYMENT SUCCESSFUL!");
+			result.put("RESULT", PAYMENT_SUCCESSFUL);
 			result.put("MESSAGE", "You have successfully paid the order!");
 		} catch (PaymentException | UnrecognizedException ex) {
 			result.put("MESSAGE", ex.getMessage());

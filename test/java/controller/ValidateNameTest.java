@@ -24,7 +24,7 @@ public class ValidateNameTest {
             "true, null"
     })
     void test(boolean expected, String name) {
-        boolean isValid = placeOrderController.validateName(name);
+        boolean isValid = Validator.validateName(name);
         assertEquals(expected, isValid);
     }
 }

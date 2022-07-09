@@ -1,7 +1,16 @@
 package calculator.shippingfee;
 
-public interface ShippingFeeCalculatorStrategy {
+import calculator.distance.DistanceCalculatorInterface;
+import entity.order.Order;
 
-    int calculate(String from, String to);
+public abstract class ShippingFeeCalculatorStrategy {
+
+    protected DistanceCalculatorInterface distanceCalculator;
+
+    public ShippingFeeCalculatorStrategy(DistanceCalculatorInterface distanceCalculator) {
+        this.distanceCalculator = distanceCalculator;
+    }
+
+    public abstract int calculate(Order order);
 
 }

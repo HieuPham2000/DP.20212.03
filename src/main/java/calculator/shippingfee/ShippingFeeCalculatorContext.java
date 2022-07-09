@@ -1,5 +1,7 @@
 package calculator.shippingfee;
 
+import entity.order.Order;
+
 public class ShippingFeeCalculatorContext {
 
     private ShippingFeeCalculatorStrategy strategy;
@@ -12,7 +14,7 @@ public class ShippingFeeCalculatorContext {
         this.strategy = strategy;
     }
 
-    public int calculate(String from, String to) {
-        return strategy.calculate(from, to);
+    public int calculate(Order order) {
+        return strategy.calculate(order);
     }
 }

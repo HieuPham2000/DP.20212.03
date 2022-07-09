@@ -1,8 +1,13 @@
 package entity.order;
 
+import calculator.distance.EuclideanCalculator;
+import calculator.shippingfee.DistanceBaseStrategy;
+import calculator.shippingfee.ShippingFeeCalculatorContext;
+import calculator.shippingfee.ShippingFeeCalculatorStrategy;
 import controller.SessionInformation;
 import entity.cart.Cart;
 import entity.cart.CartItem;
+import entity.order.state.OrderState;
 import entity.shipping.DeliveryInfo;
 import views.screen.ViewsConfig;
 
@@ -16,7 +21,9 @@ public class Order {
     private int subtotal;
     private int tax;
     private List orderMediaList;
-    protected DeliveryInfo deliveryInfo;
+    private DeliveryInfo deliveryInfo;
+    private ShippingFeeCalculatorContext shippingFeeCalculator;
+    private OrderState state;
 
     public Order(Cart cart) {
         List<OrderItem> orderItems = new ArrayList<>();
@@ -30,6 +37,8 @@ public class Order {
         this.orderMediaList = Collections.unmodifiableList(orderItems);
         this.subtotal = cart.calSubtotal();
         this.tax = (int) (ViewsConfig.PERCENT_VAT/100) * subtotal;
+        ShippingFeeCalculatorStrategy strategy = new DistanceBaseStrategy(new EuclideanCalculator());
+        this.shippingFeeCalculator = new ShippingFeeCalculatorContext(strategy);
     }
 
     public List getListOrderMedia() {
@@ -37,7 +46,9 @@ public class Order {
     }
 
     public int getShippingFees() {
-        if (deliveryInfo == null) return 0;
+        if (deliveryInfo == null) {
+            throw new RuntimeException("Order has no delivery information");
+        }
         return this.shippingFees;
     }
 
@@ -47,7 +58,7 @@ public class Order {
 
     public void setDeliveryInfo(DeliveryInfo deliveryInfo) {
         this.deliveryInfo = deliveryInfo;
-        this.shippingFees = deliveryInfo.calculateShippingFee();
+        this.shippingFees = shippingFeeCalculator.calculate(this);
     }
 
     public int getSubtotal() {
@@ -57,4 +68,29 @@ public class Order {
     public int getTotal() {
         return this.subtotal + this.tax + this.shippingFees;
     }
+
+    public String getProvince() {
+        return this.deliveryInfo.getProvince();
+    }
+
+    public String getAddress() {
+        return this.deliveryInfo.getAddress();
+    }
+
+    public OrderState getState() {
+        return state;
+    }
+
+    public void setState(OrderState state) {
+        this.state = state;
+    }
+
+    public void payOrder() {
+        state.payOrder();
+    }
+
+    public void cancelOrder() {
+        state.cancelOrder();
+    }
+
 }
