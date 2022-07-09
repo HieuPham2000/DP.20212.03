@@ -3,6 +3,7 @@ package entity.media;
 import java.sql.SQLException;
 import java.util.Date;
 
+@DisplayName(name = "DVD")
 public class DVD extends Media {
 
     private String discType;

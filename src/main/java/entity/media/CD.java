@@ -2,6 +2,7 @@ package entity.media;
 
 import java.util.Date;
 
+@DisplayName(name = "CD")
 public class CD extends Media {
 
     private String artist;

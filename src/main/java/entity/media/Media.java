@@ -14,6 +14,7 @@ import java.util.logging.Logger;
  * The general media class, for another media it can be done by inheriting this class
  * @author nguyenlm
  */
+@DisplayName(name = "Media")
 public class Media {
 
     protected int id;
@@ -46,16 +47,24 @@ public class Media {
             Field[] objectFields = this.getClass().getDeclaredFields();
             for (Field field : parentFields) {
                 field.setAccessible(true);
-                map.put(field.getName(), field.get(this));
+                putDisplayNameOrFieldNameToMap(map, field);
             }
             for (Field field : objectFields) {
                 field.setAccessible(true);
-                map.put(field.getName(), field.get(this));
+                putDisplayNameOrFieldNameToMap(map, field);
             }
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
         return map;
+    }
+
+    private void putDisplayNameOrFieldNameToMap(Map<String, Object> map, Field field) throws IllegalAccessException {
+        if (field.isAnnotationPresent(DisplayName.class)) {
+            map.put(field.getAnnotation(DisplayName.class).name(), field.get(this));
+        } else {
+            map.put(field.getName(), field.get(this));
+        }
     }
 
     // Vi phạm SRP: vì method này connect đến CSDL, không phải nhiệm vụ của class entity
@@ -125,4 +134,5 @@ public class Media {
         this.type = type;
         return this;
     }
+
 }

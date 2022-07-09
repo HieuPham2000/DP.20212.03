@@ -2,6 +2,7 @@ package entity.media;
 
 import java.util.Date;
 
+@DisplayName(name = "Book")
 public class Book extends Media {
 
     private String author;
