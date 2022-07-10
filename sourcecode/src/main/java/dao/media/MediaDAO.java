@@ -37,7 +37,7 @@ public abstract class MediaDAO {
         String sql = "SELECT * FROM Media WHERE id = ?";
         PreparedStatement stm = AIMSDB.getConnection().prepareStatement(sql);
         stm.setInt(1, id);
-        ResultSet res = stm.executeQuery(sql);
+        ResultSet res = stm.executeQuery();
 
         if (res.next()) {
             return res.getInt("quantity");
