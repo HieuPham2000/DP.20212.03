@@ -38,4 +38,5 @@ Tuân + Quốc
 Hùng + Hiếu
 
 **3. Vẽ biểu đồ:** Hùng + Hiếu
+
 **4. Làm báo cáo:** Hùng
