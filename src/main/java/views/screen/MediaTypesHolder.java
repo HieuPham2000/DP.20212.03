@@ -1,5 +1,6 @@
 package views.screen;
 
+import entity.media.DisplayName;
 import entity.media.Media;
 import org.reflections.Reflections;
 
@@ -17,7 +18,11 @@ public class MediaTypesHolder {
         Set<String> mediaTypeNames = new HashSet<>();
         Set<Class<? extends Media>> allClasses = reflections.getSubTypesOf(Media.class);
         for (Class<? extends Media> c : allClasses) {
-            mediaTypeNames.add(c.getSimpleName());
+            if (c.isAnnotationPresent(DisplayName.class)) {
+                mediaTypeNames.add(c.getAnnotation(DisplayName.class).name());
+            } else {
+                mediaTypeNames.add(c.getSimpleName());
+            }
         }
         return new ArrayList<>(mediaTypeNames);
     }

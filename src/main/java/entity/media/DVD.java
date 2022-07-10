@@ -3,15 +3,16 @@ package entity.media;
 import java.sql.SQLException;
 import java.util.Date;
 
+@DisplayName(name = "DVD")
 public class DVD extends Media {
 
-    String discType;
-    String director;
-    int runtime;
-    String studio;
-    String subtitles;
-    Date releasedDate;
-    String filmType;
+    private String discType;
+    private String director;
+    private int runtime;
+    private String studio;
+    private String subtitles;
+    private Date releasedDate;
+    private String filmType;
 
     public DVD(int id, String title, String category, int price, int quantity, String type, String discType,
             String director, int runtime, String studio, String subtitles, Date releasedDate, String filmType) throws SQLException{
