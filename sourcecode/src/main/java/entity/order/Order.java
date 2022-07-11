@@ -1,8 +1,5 @@
 package entity.order;
 
-import calculator.distance.EuclideanCalculator;
-import calculator.shippingfee.DistanceBaseStrategy;
-import calculator.shippingfee.ShippingFeeCalculatorContext;
 import calculator.shippingfee.ShippingFeeCalculatorStrategy;
 import controller.SessionInformation;
 import entity.cart.Cart;
@@ -22,10 +19,10 @@ public class Order {
     private int tax;
     private List orderMediaList;
     private DeliveryInfo deliveryInfo;
-    private ShippingFeeCalculatorContext shippingFeeCalculator;
     private OrderState state;
+    private ShippingFeeCalculatorStrategy strategy;
 
-    public Order(Cart cart) {
+    public Order(Cart cart, ShippingFeeCalculatorStrategy strategy) {
         List<OrderItem> orderItems = new ArrayList<>();
         for (Object object : SessionInformation.cartInstance.getListMedia()) {
             CartItem cartItem = (CartItem) object;
@@ -37,8 +34,7 @@ public class Order {
         this.orderMediaList = Collections.unmodifiableList(orderItems);
         this.subtotal = cart.calSubtotal();
         this.tax = (int) (ViewsConfig.PERCENT_VAT/100) * subtotal;
-        ShippingFeeCalculatorStrategy strategy = new DistanceBaseStrategy(new EuclideanCalculator());
-        this.shippingFeeCalculator = new ShippingFeeCalculatorContext(strategy);
+        this.strategy = strategy;
     }
 
     public List getListOrderMedia() {
@@ -58,7 +54,7 @@ public class Order {
 
     public void setDeliveryInfo(DeliveryInfo deliveryInfo) {
         this.deliveryInfo = deliveryInfo;
-        this.shippingFees = shippingFeeCalculator.calculate(this);
+        this.shippingFees = strategy.calculate(this);
     }
 
     public int getSubtotal() {
