@@ -15,28 +15,22 @@ Nhóm 03
 
 **1. Phát hiện, xử lý các vấn đề cohesion / coupling / SOLID / clean code:**
 Chia theo subteam: 
-- Hiếu + Tuân: common + controller + dao + entity
-- Hùng + Quốc: subsystem + utils + views.screen
+- Phạm Trung Hiếu + Nguyễn Minh Tuân: common + controller + dao + entity
+- Nguyễn Đình Hùng + Phạm Hữu Anh Quốc: subsystem + utils + views.screen
 
 **2. Thay đổi trong tương lai:**
-- **Số 1: Thêm mặt hàng Media mới: AudioBook**
-Hùng + Quốc
+- **Số 1: Thêm mặt hàng Media mới AudioBook:** Phạm Hữu Anh Quốc 
 
-- **Số 2: Thêm màn hình: Xem chi tiết sản phẩm**
-Hùng + Hiếu
+- **Số 2: Thêm màn hình: Xem chi tiết sản phẩm:** Phạm Hữu Anh Quốc
 
-- **Số 3: Thay đổi yêu cầu khi load giao diện**
-Hiếu + Tuân
+- **Số 3: Thay đổi yêu cầu khi load giao diện:** Phạm Trung Hiếu
 
-- **Số 4 + 6: Thay đổi cách tính khoảng cách, sử dụng thư viện mới; thay đổi cách tính khoảng cách, sử dụng thư viện mới**
-Hiếu + Hùng
+- **Số 4 + 6: Thay đổi cách tính khoảng cách, sử dụng thư viện mới; thay đổi cách tính khoảng cách, sử dụng thư viện mới:** Nguyễn Đình Hùng
 
-- **Số 5: Thêm phương thức thanh toán mới: Thẻ nội địa (Domestic Card)**
-Tuân + Quốc
+- **Số 5: Thêm phương thức thanh toán mới: Thẻ nội địa (Domestic Card):** Nguyễn Minh Tuân
 
-- **Số 7: Cập nhật lại chức năng hủy đơn hàng**
-Hùng + Hiếu
+- **Số 7: Cập nhật lại chức năng hủy đơn hàng:** Phạm Trung Hiếu
 
-**3. Vẽ biểu đồ:** Hùng + Hiếu
+**3. Vẽ biểu đồ:** Nguyễn Đình Hùng + Phạm Trung Hiếu
 
-**4. Làm báo cáo:** Hùng
+**4. Làm báo cáo:** Nguyễn Đình Hùng

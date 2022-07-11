@@ -1,5 +1,8 @@
 package controller;
 
+import calculator.distance.DistanceCalculatorInterface;
+import calculator.distance.EuclideanCalculator;
+import calculator.shippingfee.DistanceBaseStrategy;
 import common.exception.InvalidDeliveryInfoException;
 import entity.invoice.Invoice;
 import entity.order.Order;
@@ -38,7 +41,8 @@ public class PlaceOrderController extends BaseController {
      * @throws SQLException
      */
     public Order createOrder() throws SQLException {
-        return new Order(SessionInformation.cartInstance);
+        DistanceCalculatorInterface distanceCalculator = new EuclideanCalculator();
+        return new Order(SessionInformation.cartInstance, new DistanceBaseStrategy(distanceCalculator));
     }
 
     /**
